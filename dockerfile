@@ -23,7 +23,7 @@ RUN mkdir /home/database && \
     osf -p 56uf7 fetch osfstorage/emu-prebuilt/emu.tar && \
     tar -xvf emu.tar
     
-RUN conda create -y -n emu python=3.7
+RUN conda create -y -n emu python=3.10
 SHELL ["conda", "run", "-n", "emu", "/bin/bash", "-c"]
 
 # Install emu
@@ -33,4 +33,8 @@ RUN conda init && \
     conda config --add channels conda-forge && \
     conda install -y emu && \
     conda install -y seqtk && \
-    echo "conda activate emu" >> ~/.bashrc
+    echo "conda activate emu" >> ~/.bashrc && \
+    mkdir /home/data && \
+    # Cleanup
+    rm miniconda.sh && \
+    rm /home/database/emu.tar
