@@ -1,5 +1,5 @@
 # Set the base image to Ubuntu 20.04 LTS
-FROM ubuntu:bionic-20230530
+FROM ubuntu:20.04
 
 # Disable prompts during package installation
 ENV DEBIAN_FRONTEND noninteractive
@@ -38,3 +38,5 @@ RUN conda init && \
     # Cleanup
     rm miniconda.sh && \
     rm /home/database/emu.tar
+
+RUN echo "export EMU_DATABASE_DIR=/home/database" >> ~/.bashrc
