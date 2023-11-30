@@ -40,3 +40,5 @@ RUN conda init && \
     rm /home/database/emu.tar
 
 RUN echo "export EMU_DATABASE_DIR=/home/database" >> ~/.bashrc
+
+WORKDIR /home/data
